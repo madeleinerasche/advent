@@ -1,7 +1,11 @@
 package main
-import "fmt"
 
-// simple test code - hello world 
+import (
+	"fmt"
+)
+
+// simple test code - hello world
 func main() {
-    fmt.Println("hello world")
+	fmt.Println("hello world")
+	ad.day1()
 }
