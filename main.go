@@ -5,8 +5,14 @@ import (
 	"fmt"
 )
 
-// simple test code - hello world
 func main() {
-	fmt.Println("hello world")
-	ad.Day1()
+	fmt.Println("Advent 2023")
+
+	// Day 1
+	num, err := ad.Day1()
+	if err != nil {
+		fmt.Println(nil)
+	} else {
+		fmt.Println(num)
+	}
 }
