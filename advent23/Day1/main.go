@@ -44,39 +44,34 @@ func ReadFile(filepath string) ([]string, error) {
 	return lines, nil
 }
 
+// Answer: 55002
 func calibrationPart1(lines []string) (int, error) {
-	sum := 0
+	var sum int
 	var err error
-	var start string
-	var end string
 
 	for i := 0; i < len(lines); i++ {
 		// find end of string
 		k := len(lines[i]) - 1
 
 		// reset each time
-		startFound := false
-		endFound := false
-		num := 0
+		start := ""
+		end := ""
 
 		for j := 0; j < len(lines[i]); j++ {
 
 			// looking for start
-			if unicode.IsNumber(rune(lines[i][j])) && !startFound {
+			if unicode.IsNumber(rune(lines[i][j])) && start == "" {
 				start = string(lines[i][j])
-				startFound = true
 			}
 
 			// looking for end
-			if unicode.IsNumber(rune(lines[i][k])) && !endFound {
+			if unicode.IsNumber(rune(lines[i][k])) && end == "" {
 				end = string(lines[i][k])
-				endFound = true
 			}
 
 			// once both found, add to sum and break from loop
-			if startFound && endFound {
-				fullNum := start + end
-				num, err = strconv.Atoi(fullNum) // convert string to int
+			if start != "" && end != "" {
+				num, err := strconv.Atoi(start + end) // convert string to int
 				if err == nil {
 					sum += num
 				}
